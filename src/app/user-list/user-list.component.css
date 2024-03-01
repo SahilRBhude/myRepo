@@ -1,0 +1,31 @@
+.user-list-conatiner {
+    width:80%;
+    margin: bottom 40px;
+    ;
+}
+
+.user-list-form {
+    margin: bottom 50px;
+}
+
+.user-list-form input {
+    padding: 8px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.user-list li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius:5px;
+}
+
+.user-list li span {
+    margin-top: 10px;
+}
+
+.user-list li:hover {
+    background-color: #e9e9e9;
+}

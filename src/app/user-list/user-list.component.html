@@ -1,0 +1,19 @@
+<div class="user-list-container">
+    <form class="user-list-form" >
+        <input type="text" placeholder="Filter by name" 
+        [(ngModel)]="filterByName" name="filterByName" input="applyFilters()"
+        >
+        <input type="text" placeholder="Filter by email" 
+        [(ngModel)]="filterByEmail" name="filterByEmail" input="applyFilters()"
+        >
+        <button onclick="applyFilters()">Apply Filter</button>
+    </form>
+
+    <ul class="user-list">
+        <li class="user-list" *ngFor="let user of filteredUsers">
+            <span class="user-list">{{user.name}}</span>
+            <span class="user-list">{{user.email}}</span>
+
+        </li>
+    </ul>
+</div>
