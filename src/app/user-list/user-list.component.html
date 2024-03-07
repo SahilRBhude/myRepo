@@ -1,19 +1,39 @@
-<div class="user-list-container">
-    <form class="user-list-form" >
-        <input type="text" placeholder="Filter by name" 
-        [(ngModel)]="filterByName" name="filterByName" input="applyFilters()"
-        >
-        <input type="text" placeholder="Filter by email" 
-        [(ngModel)]="filterByEmail" name="filterByEmail" input="applyFilters()"
-        >
-        <button onclick="applyFilters()">Apply Filter</button>
-    </form>
-
-    <ul class="user-list">
-        <li class="user-list" *ngFor="let user of filteredUsers">
-            <span class="user-list">{{user.name}}</span>
-            <span class="user-list">{{user.email}}</span>
-
-        </li>
-    </ul>
+<div>
+  <button class="add-btn" (click)="addUser()">Add User</button>
 </div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <ng-container *ngIf="!user.editing; else editFields">
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.address }}</td>
+      </ng-container>
+      <ng-template #editFields>
+        <td><input type="text" [(ngModel)]="user.firstname"></td>
+        <td><input type="text" [(ngModel)]="user.lastname"></td>
+        <td><input type="text" [(ngModel)]="user.email"></td>
+        <td><input type="text" [(ngModel)]="user.address"></td>
+      </ng-template>
+      <td>
+        <button class="btn-group" (click)="user.editing = !user.editing">
+          {{ user.editing ? 'Cancel' : 'Edit' }}
+        </button>
+        <button class="btn-group" *ngIf="user.editing" (click)="saveUser(user)">Save</button>
+        <button class="btn-group" (click)="deleteUser(user.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
